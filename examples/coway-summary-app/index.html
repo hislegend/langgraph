@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>코웨이 매트리스 상담 요약 이미지 생성기</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
+  </head>
+  <body>
+    <main class="container">
+      <section class="panel form-panel">
+        <h1>코웨이 매트리스 상담 요약 이미지 생성기</h1>
+        <p class="subtitle">입력 후 <strong>이미지 생성</strong> 버튼을 누르면 고객 전달용 PNG가 생성됩니다.</p>
+
+        <div class="grid">
+          <label>고객명
+            <input id="customerName" placeholder="예: 김고객" />
+          </label>
+          <label>상담일
+            <input id="consultDate" type="date" />
+          </label>
+          <label>상품명
+            <input id="productName" placeholder="예: 코웨이 스마트 매트리스 A" />
+          </label>
+          <label>담당자 연락처
+            <input id="agentContact" placeholder="예: 010-1234-5678" />
+          </label>
+          <label>월 기본료 (원)
+            <input id="basePrice" type="number" min="0" value="50000" />
+          </label>
+          <label>월 할인 금액 (원)
+            <input id="discountPrice" type="number" min="0" value="10000" />
+          </label>
+        </div>
+
+        <label>제공 혜택 (한 줄에 하나씩)
+          <textarea id="benefits" rows="4" placeholder="예:\n- 첫 달 등록비 면제\n- 6개월 필터 무상 교체"></textarea>
+        </label>
+
+        <label>고객이 추후 해야 할 일 (한 줄에 하나씩)
+          <textarea id="todos" rows="4" placeholder="예:\n- 제휴카드 발급 및 결제수단 등록\n- 설치 희망일 확정"></textarea>
+        </label>
+
+        <div class="actions">
+          <button id="previewBtn" type="button">미리보기 갱신</button>
+          <button id="downloadBtn" type="button">이미지 생성 (PNG)</button>
+        </div>
+      </section>
+
+      <section class="panel preview-panel">
+        <h2>고객 전달용 요약본</h2>
+        <article id="summaryCard" class="summary-card">
+          <header>
+            <p class="badge">코웨이 매트리스 상담 요약</p>
+            <h3 id="previewCustomer">김고객 님 상담 안내</h3>
+            <p id="previewMeta">상담일: - | 담당자: -</p>
+          </header>
+
+          <section>
+            <h4>1) 월 비용</h4>
+            <p id="previewCost">월 0원 (기본료 0원 - 할인 0원)</p>
+            <p id="previewProduct">상품: -</p>
+          </section>
+
+          <section>
+            <h4>2) 제공 혜택</h4>
+            <ul id="previewBenefits"><li>혜택을 입력하세요.</li></ul>
+          </section>
+
+          <section>
+            <h4>3) 추후 고객 할 일</h4>
+            <ul id="previewTodos"><li>할 일을 입력하세요.</li></ul>
+          </section>
+
+          <footer>
+            <p>문의: <span id="previewContact">-</span></p>
+          </footer>
+        </article>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
